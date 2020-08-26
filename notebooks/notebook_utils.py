@@ -23,6 +23,14 @@ def read_nifti(file_path, print_info=True):
         print("Image size:", image_size)
         print("Pixel spacing (mm):", pixel_spacing)
         print("Physical size (mm):", [image_size[i]*pixel_spacing[i] for i in range(3)])
+
+
+        image_stats = sitk.StatisticsImageFilter()
+        image_stats.Execute(sitk_image)
+
+        print(f"\n----- Image Statistics ----- \n Max Intensity: {image_stats.GetMaximum()} \
+                \n Min Intensity: {image_stats.GetMinimum()} \n Mean: {image_stats.GetMean()} \
+                \n Variance: {image_stats.GetVariance()} \n")
         
         print("Components per pixel:", sitk_image.GetNumberOfComponentsPerPixel())
         
