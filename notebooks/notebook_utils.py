@@ -116,15 +116,15 @@ def display_slices(sitk_image,
         if ndarray.ndim == 3 : image2d = ndarray[idx, :, :]
         if ndarray.ndim == 4 : image2d = ndarray[idx, :, :, :]
         axial_slices.append(image2d)
-    
-    axial_slices = np.hstack(axial_slices)  
 
-    n_rows = image2d.shape[0] # #rows of the 2d array - corresponds to sitk image height
-    n_cols = image2d.shape[1] # #columns of the 2d array - corresponds to sitk image width
-    extent = (0, len(axial_slice_idxs)*n_cols*spacing[0], n_rows*spacing[1], 0)
-    ax1.imshow(axial_slices, extent=extent, interpolation=None, cmap='gray')
-    ax1.set_title(f"Axial slices: {axial_slice_idxs}")
-    ax1.axis('off')
+    if len(axial_slices) != 0:
+        axial_slices = np.hstack(axial_slices)  
+        n_rows = image2d.shape[0] # #rows of the 2d array - corresponds to sitk image height
+        n_cols = image2d.shape[1] # #columns of the 2d array - corresponds to sitk image width
+        extent = (0, len(axial_slice_idxs)*n_cols*spacing[0], n_rows*spacing[1], 0)
+        ax1.imshow(axial_slices, extent=extent, interpolation=None, cmap='gray')
+        ax1.set_title(f"Axial slices: {axial_slice_idxs}")
+        ax1.axis('off')
     
     
     # Extract coronal slices --
@@ -135,14 +135,14 @@ def display_slices(sitk_image,
         image2d = np.rot90(image2d, 2)
         coronal_slices.append(image2d)
         
-    coronal_slices = np.hstack(coronal_slices)
-    
-    n_rows = image2d.shape[0] # #rows of the 2d array - corresponds to sitk image depth
-    n_cols = image2d.shape[1] # #columns of the 2d array - corresponds to sitk image width
-    extent = (0, len(coronal_slice_idxs)*n_cols*spacing[0], n_rows*spacing[2], 0)
-    ax2.imshow(coronal_slices, extent=extent, interpolation=None, cmap='gray')
-    ax2.set_title(f"Coronal slices: {coronal_slice_idxs}")
-    ax2.axis('off')
+    if len(coronal_slices) != 0:
+        coronal_slices = np.hstack(coronal_slices)
+        n_rows = image2d.shape[0] # #rows of the 2d array - corresponds to sitk image depth
+        n_cols = image2d.shape[1] # #columns of the 2d array - corresponds to sitk image width
+        extent = (0, len(coronal_slice_idxs)*n_cols*spacing[0], n_rows*spacing[2], 0)
+        ax2.imshow(coronal_slices, extent=extent, interpolation=None, cmap='gray')
+        ax2.set_title(f"Coronal slices: {coronal_slice_idxs}")
+        ax2.axis('off')
 
     
     # Extract sagittal slices --
@@ -154,14 +154,14 @@ def display_slices(sitk_image,
         image2d = np.flip(image2d, axis=1)
         sagittal_slices.append(image2d)
         
-    sagittal_slices = np.hstack(sagittal_slices)
-        
-    n_rows = image2d.shape[0] # #rows of the 2d array - corresponds to sitk image depth
-    n_cols = image2d.shape[1] # #columns of the 2d array - corresponds to sitk image height
-    extent = (0, len(sagittal_slice_idxs)*n_cols*spacing[1], n_rows*spacing[2], 0)
-    ax3.imshow(sagittal_slices, extent=extent, interpolation=None, cmap='gray')
-    ax3.set_title(f"Sagittal slices: {sagittal_slice_idxs}")
-    ax3.axis('off')
+    if len(sagittal_slices) != 0:
+        sagittal_slices = np.hstack(sagittal_slices)
+        n_rows = image2d.shape[0] # #rows of the 2d array - corresponds to sitk image depth
+        n_cols = image2d.shape[1] # #columns of the 2d array - corresponds to sitk image height
+        extent = (0, len(sagittal_slice_idxs)*n_cols*spacing[1], n_rows*spacing[2], 0)
+        ax3.imshow(sagittal_slices, extent=extent, interpolation=None, cmap='gray')
+        ax3.set_title(f"Sagittal slices: {sagittal_slice_idxs}")
+        ax3.axis('off')
     
     if title:
         fig.suptitle(title, fontsize='x-large')
