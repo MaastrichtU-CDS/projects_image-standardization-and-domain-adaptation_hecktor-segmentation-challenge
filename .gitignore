@@ -3,8 +3,8 @@ data/*
 
 
 # Notebook checkpoints
-notebook/.ipynb_checkpoints/*
+notebooks/.ipynb_checkpoints/*
 
 
 # Pycache
-notebook/__pycache__/*
+notebooks/__pycache__/*
