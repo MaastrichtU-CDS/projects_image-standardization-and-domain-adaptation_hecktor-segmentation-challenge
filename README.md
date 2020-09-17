@@ -1,5 +1,13 @@
 # MICCAI 2020: HECKTOR challenge for Head-and-Neck cancer segmentation using PET-CT scans
 
+## Repository Structure
+```
+notebooks  // Contains ipython notebooks for different inspection, preprocessing, postprocessing, visualization and ensembling procedures
+scripts // Contains scripts for ensembling and resampling operations. Resampling taken and slightly modified from author released repo
+utils // Contains utils for postprocessing ops
+```
+
+
 ## Important links
 
 - [HECKTOR challenge page](https://www.aicrowd.com/challenges/hecktor)
