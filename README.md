@@ -10,4 +10,3 @@
 
 - [Notion workspace](https://www.notion.so/surajpai/HECKTOR-Challenge-187fe6dd20c24307b4b4cd9b9ff578cf)
 
-- [Overleaf document for submission paper](https://www.overleaf.com/9182445962nktfffzqfchg)
